@@ -1,0 +1,30 @@
+#:kivy 2.1.0
+#:import utils kivy.utils
+
+
+# COLORS
+#:set none (0, 0, 0, 0)
+#:set white (1, 1, 1, 1)
+#:set black (0, 0, 0, 1)
+#:set neutral (.9,.9,.9, 1)
+#:set accent_light utils.get_color_from_hex('#A9E1D0')
+#:set accent_dark utils.get_color_from_hex('#67C8BD')
+#:set complementary_light utils.get_color_from_hex('#9C6D54')
+#:set complementary_dark utils.get_color_from_hex('#583827')
+
+
+# BASE ELEMENTS
+#:import Label kivy.uix.label.Label
+#:import Button kivy.uix.button.Button
+
+
+
+
+<Label>:
+    color: complementary_dark
+
+<Button>:
+    background_normal: ''
+    background_down: 'gui/images/button_down.png'
+    border: (2, 2, 2, 2)
+    color: complementary_dark

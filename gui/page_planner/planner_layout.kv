@@ -1,0 +1,68 @@
+#:kivy 2.1.0
+
+#:import utils kivy.utils
+#padding = [2]*4
+
+
+
+<ArrowButton>:
+    original_color: complementary_dark
+    highlight_color: complementary_light
+    text: '<<'
+    size_hint_y: .25
+    background_color: none
+    font_size: 80
+
+
+<PlannerLayout>:
+    size: root.size
+    pos: root.pos
+    cols: 3
+
+    canvas.before:
+        Color:
+            rgba: white
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+
+        Label:
+            text: 'DONE'
+            size_hint_max_y: 80
+            font_size: 40
+        Label:
+            text: 'list of tasks'
+        Label:
+            text: 'calendar widget'
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_x: .2
+        size: self.size
+        pos: self.pos
+        
+        Widget:
+            size_hint: (1, .4)
+
+        ArrowButton:
+
+        Widget:
+
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: 'vertical'
+        padding: 20
+
+        Label:
+            text: 'TODO'
+            size_hint_max_y: 80
+            font_size: 40
+        Label:
+            text: 'list of tasks'
+        Label:
+            text: 'calendar widget'
