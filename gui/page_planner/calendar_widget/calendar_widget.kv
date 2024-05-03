@@ -1,0 +1,58 @@
+#:kivy 2.1.0
+
+#:set W .2
+
+
+
+<CalendarWidget>:
+    calendar_grid: calendar_grid
+    
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size
+        pos: root.pos
+                
+        BoxLayout:
+            cols: 7
+            spacing: 2
+            size_hint_y: .3
+            on_parent:
+                for i in range(5): day_titles = ['Mo', 'Tu', 'We', 'Th', 'Fr']; \
+                self.add_widget(Label(text = day_titles[i], font_size=20))
+                for i in range(2): day_titles = ['Sa', 'Su']; \
+                self.add_widget(Label(text = day_titles[i], font_size=20, color = accent_dark))
+
+        CalendarGrid:
+            id: calendar_grid
+
+        Label:
+            size_hint_max_y: 10
+
+        BoxLayout:
+            size: self.size
+            pos: self.pos
+            orientation: 'horizontal'
+            size_hint_max_y: 30
+            
+            canvas.before:
+                Color:
+                    rgba: neutral
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            Button:
+                text: '<'
+                size_hint: (W, 1)
+                on_press: root.prev_month()
+                background_color: neutral
+
+            Label:
+                text: root.m_title
+                font_size: 20
+
+            Button:
+                text: '>'
+                size_hint: (W, 1)
+                on_press: root.next_month()
+                background_color: neutral

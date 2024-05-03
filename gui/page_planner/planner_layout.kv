@@ -15,6 +15,9 @@
 
 
 <PlannerLayout>:
+    done_calendar: done_calendar
+    todo_calendar: todo_calendar
+    
     size: root.size
     pos: root.pos
     cols: 3
@@ -34,10 +37,12 @@
             text: 'DONE'
             size_hint_max_y: 80
             font_size: 40
+
         Label:
             text: 'list of tasks'
-        Label:
-            text: 'calendar widget'
+
+        CalendarWidget:
+            id: done_calendar
 
     BoxLayout:
         orientation: 'vertical'
@@ -62,7 +67,9 @@
             text: 'TODO'
             size_hint_max_y: 80
             font_size: 40
+
         Label:
             text: 'list of tasks'
-        Label:
-            text: 'calendar widget'
+
+        CalendarWidget:
+            id: todo_calendar
