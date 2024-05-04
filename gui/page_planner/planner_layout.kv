@@ -15,6 +15,8 @@
 
 
 <PlannerLayout>:
+    done_list: done_list
+    todo_list: todo_list
     done_calendar: done_calendar
     todo_calendar: todo_calendar
     
@@ -38,8 +40,8 @@
             size_hint_max_y: 80
             font_size: 40
 
-        Label:
-            text: 'list of tasks'
+        TaskList:
+            id: done_list
 
         CalendarWidget:
             id: done_calendar
@@ -68,8 +70,8 @@
             size_hint_max_y: 80
             font_size: 40
 
-        Label:
-            text: 'list of tasks'
+        TaskList:
+            id: todo_list
 
         CalendarWidget:
             id: todo_calendar
