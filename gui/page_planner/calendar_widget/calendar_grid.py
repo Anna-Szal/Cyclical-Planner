@@ -1,13 +1,12 @@
 import calendar
 import time
 import datetime
-from typing import NamedTuple
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.properties import BooleanProperty, ObjectProperty
 
 import gui.building_blocks as bb
-
+from logic.date import Date
 
 
 class CalendarButton(bb.ButtonHLBg, bb.ButtonOutline):
@@ -15,11 +14,6 @@ class CalendarButton(bb.ButtonHLBg, bb.ButtonOutline):
 
 class ChosenButton(bb.ButtonOutline):
     pass
-
-class Date(NamedTuple):
-    year: int
-    month: int
-    day: int
 
 
 class CalendarGrid(GridLayout):
@@ -30,7 +24,7 @@ class CalendarGrid(GridLayout):
     def __init__(self, **kwargs):
         super(CalendarGrid, self).__init__(**kwargs)
         today = time.localtime()
-        self.today_date = Date(today[0], today[1], today[2])
+        self.today_date = Date(*today[:3])
         self.chosen_date = self.today_date
         self.display_year = today[0]
         self.display_month = today[1]
