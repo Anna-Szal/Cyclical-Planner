@@ -19,3 +19,5 @@ class Date(NamedTuple):
         d0 = d0 + datetime.timedelta(days=days)
         return Date(d0.year, d0.month, d0.day)
     
+    def f_string(self):
+        return f'{self.day}.{self.month}.{self.year}'

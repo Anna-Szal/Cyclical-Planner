@@ -8,6 +8,8 @@ from .page_planner.calendar_widget.calendar_widget import CalendarWidget
 from .page_planner.calendar_widget.calendar_grid import CalendarGrid
 
 from .page_edit_cycles.edit_cycles_layout import EditCyclesLayout
+from .page_edit_cycles.cycle_list import CyclesList
+from .page_edit_cycles.cycle_row import CycleRow
 
 
 
@@ -22,3 +24,4 @@ Builder.load_file(os.path.join(here, 'page_planner', 'calendar_widget', 'calenda
 Builder.load_file(os.path.join(here, 'page_planner', 'calendar_widget', 'calendar_grid.kv'))
 
 Builder.load_file(os.path.join(here, 'page_edit_cycles', 'edit_cycles_layout.kv'))
+Builder.load_file(os.path.join(here, 'page_edit_cycles', 'cycle_row.kv'))

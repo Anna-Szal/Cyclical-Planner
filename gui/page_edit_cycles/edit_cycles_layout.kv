@@ -2,13 +2,6 @@
 #:import TextInput kivy.uix.textinput.TextInput
 
 
-<CycleRow>:
-    orientation: 'horizontal'
-    size_hint: (1, None)
-    height: 30
-
-# <CyclesList>:
-
 
 <EditCyclesLayout>:
     cycles_list: cycles_list
@@ -46,6 +39,14 @@
     Label:
         id: info
         size_hint_max_y: 40
+        font_size: 18
+        color: alert
+
+    Label:
+        text: ' Add new cycle:'
+        halign: 'left'
+        size_hint_max_y: 30
+        text_size: self.size
 
     BoxLayout:
         size_hint_max_y: 40
