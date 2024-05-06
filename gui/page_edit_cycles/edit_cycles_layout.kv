@@ -1,0 +1,68 @@
+#:kivy 2.3.0
+#:import TextInput kivy.uix.textinput.TextInput
+
+
+<CycleRow>:
+    orientation: 'horizontal'
+    size_hint: (1, None)
+    height: 30
+
+# <CyclesList>:
+
+
+<EditCyclesLayout>:
+    cycles_list: cycles_list
+    info: info
+    input_task: input_task
+    input_period: input_period
+    input_date: input_date
+
+    orientation: 'vertical'
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)  # white
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_max_y: 60
+        Label:
+            text: 'PLAN'          
+            font_size: 22
+        Label:
+            text: 'PERIOD (days)'
+            font_size: 22
+        Label:
+            text: 'NEXT DATE'
+            font_size: 22
+
+    CyclesList:
+        id: cycles_list
+        do_scroll_x: False
+        do_scroll_y: True
+
+    Label:
+        id: info
+        size_hint_max_y: 40
+
+    BoxLayout:
+        size_hint_max_y: 40
+
+        TextInput:
+            id: input_task
+            multiline: False
+        TextInput:
+            id: input_period
+            multiline: False
+        TextInput:
+            id: input_date
+            multiline: False
+
+    Button:
+        text: '+'
+        background_color: (.6, .6, .6, 1)
+        on_press: root.create_new_cycle()
+        size_hint_y: .2
+        font_size: 80

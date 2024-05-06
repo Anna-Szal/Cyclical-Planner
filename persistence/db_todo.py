@@ -3,10 +3,11 @@ from typing import List, Optional
 
 from logic.date import Date
 from logic.cycle import Cycle
+from logic.db_interfaces import DbTodoInterface
 
 
 
-class DbTodo:
+class DbTodo(DbTodoInterface):
     def __init__(self, db_path: str):
         self.db_path = db_path
 

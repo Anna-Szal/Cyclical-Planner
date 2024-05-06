@@ -1,8 +1,10 @@
 import sqlite3 as sl
 
+from logic.db_interfaces import DbDoneInterface
 
 
-class DbDone:
+
+class DbDone(DbDoneInterface):
     def __init__(self, db_path):
         self.db_path = db_path
 
