@@ -59,6 +59,9 @@ class DbLogic:
     def get_done_dates(self, task: str):
         return self.done_db.get_dates(task)
 
+    def update_task(self, old_task_name: str, new_task_name: str):
+        return self.done_db.update_task(old_task_name, new_task_name)
+    
     def remove_task(self, task:str):
         pass
 

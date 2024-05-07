@@ -31,11 +31,12 @@ class CycleRow(BoxLayout):
 
 
     def edit_task(self, task_input):
-        task, msg = preprocess_task(task_input.text)
-        if task:
-            old_task_name = self.cycle.task
-            self.cycle.task = task
+        old_task_name = self.cycle.task
+        new_task_name, msg = preprocess_task(task_input.text)
+        if new_task_name:
+            self.cycle.task = new_task_name
             self.db_logic.update_cycle(old_task_name, self.cycle)
+            self.db_logic.update_task(old_task_name, new_task_name)
         else:
            self.alert = msg
            self.task_input.text = self.cycle.task

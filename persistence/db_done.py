@@ -38,11 +38,17 @@ class DbDone(DbDoneInterface):
             task_id = cursor.fetchone()
 
             if task_id:         
-                cursor.execute('SELECT date_id FROM done_task_date WHERE task_id=(?)', task_id)
+                cursor.execute(
+                    'SELECT date_id FROM done_task_date WHERE task_id=(?)', 
+                    task_id
+                    )
                 date_ids = cursor.fetchall()
 
                 for id in date_ids:
-                    cursor.execute('SELECT year, month, day FROM done_date WHERE id=(?)', id)
+                    cursor.execute(
+                        'SELECT year, month, day FROM done_date WHERE id=(?)', 
+                        id
+                        )
                     date = cursor.fetchone()
                     dates.append(date)
 
@@ -61,19 +67,42 @@ class DbDone(DbDoneInterface):
                 cursor.execute('INSERT INTO done_task (task) VALUES(?)', (task,))
                 task_id = cursor.lastrowid
 
-            cursor.execute('SELECT * FROM done_date WHERE year=(?) AND month=(?) AND day=(?)', date)
+            cursor.execute(
+                'SELECT * FROM done_date WHERE year=(?) AND month=(?) AND day=(?)', 
+                date
+                )
             date_db = cursor.fetchone()
             if date_db:
                 date_id = date_db[0]
             else:
-                cursor.execute('INSERT INTO done_date (year, month, day) VALUES(?, ?, ?)', date)
+                cursor.execute(
+                    'INSERT INTO done_date (year, month, day) VALUES(?, ?, ?)', 
+                    date
+                    )
                 date_id = cursor.lastrowid
             
-            cursor.execute('SELECT * FROM done_task_date WHERE task_id=(?) AND date_id=(?)', (task_id, date_id))
+            cursor.execute(
+                'SELECT * FROM done_task_date WHERE task_id=(?) AND date_id=(?)', 
+                (task_id, date_id)
+                )
             pair = cursor.fetchone()
             if not pair:
-                cursor.execute('INSERT INTO done_task_date VALUES(?, ?)', (task_id, date_id))
+                cursor.execute(
+                    'INSERT INTO done_task_date VALUES(?, ?)', 
+                    (task_id, date_id)
+                    )
 
+            con.commit()
+
+
+    def update_task(self, old_task_name, new_task_name):
+        con = sl.connect(self.db_path)
+        with con:
+            cursor = con.cursor()
+            cursor.execute(
+                'UPDATE done_task SET task=(?) WHERE task=(?)', 
+                (new_task_name, old_task_name)
+                )
             con.commit()
 
     # TODO

@@ -72,7 +72,8 @@ class DbTodo(DbTodoInterface):
             cursor.execute(
                 '''
                 UPDATE cycle
-                SET 
+                SET
+                    task = (?), 
                     period = (?),
                     start_year = (?),
                     start_month = (?),
@@ -80,6 +81,7 @@ class DbTodo(DbTodoInterface):
                 WHERE task = (?)
                 ''',
                 (
+                    new_cycle.task,
                     new_cycle.period,
                     new_cycle.next_date.year, 
                     new_cycle.next_date.month, 

@@ -7,8 +7,7 @@ Planner for repetetive tasks.
 
 **The idea**: Say you want to go jogging every 3 days, the planner will show this task every third day. If you don't go jogging as expected, the planner will start to suggest jogging every day untill you do that. Then the cycle will get adjusted to show "jogging" task again 3 days from that moment. Also you don't have to check in the done task right away. If it's the next day already, you just take the "jogging" task from today's TO DO tasks and put it into yesterday's DONE tasks (or any other date), and the planner will recalculate everything accordingly.
 
-
-<center><img src="screenshot.png" alt="planner screenshot" width="400"/></center>
+<img src="screenshot.png" alt="planner screenshot" width="400"/>
 
 ## Open planner automatically on startup:
 <details>

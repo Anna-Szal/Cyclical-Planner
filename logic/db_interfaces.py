@@ -25,17 +25,16 @@ class DbTodoInterface:
 
 class DbDoneInterface:
     def get_tasks(self, date: Date) -> List[str]:
-        # get all tasks done that day
         pass
 
     def get_dates(self, task: str) -> List[Date]:
-        # get all "done" dates for this task
         pass
 
     def insert_task(self, task: str, date: Date) -> None:
-        # a task was performed on a certain date, save this to the database
+        pass
+
+    def update_task(self, old_task_name: str, new_task_name: str) -> None:
         pass
 
     def remove_task(self, task: str, date: Date) -> None:
-        # maybe user made a mistake, this task wasn't performed on this day
         pass
