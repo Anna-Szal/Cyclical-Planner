@@ -14,7 +14,7 @@ class CyclesList(ScrollView):
 
     def update(self):
         self.clear_widgets()
-        cycles = App.get_running_app().logic.get_all_cycles()
+        cycles = App.get_running_app().db_logic.get_all_cycles()
         the_list = StackLayout()
         self.add_widget(the_list)
         for cycle in cycles:

@@ -4,7 +4,7 @@ from kivy.uix.textinput import TextInput
 from kivy.properties import StringProperty
 
 from logic.cycle import Cycle
-from gui.page_edit_cycles.input_preprocessing import *
+from logic.input_preprocessing import *
 
 
 
@@ -15,7 +15,7 @@ class CycleRow(BoxLayout):
         super(CycleRow, self).__init__(**kwargs)
         self.cycle = cycle
 
-        self.logic = App.get_running_app().logic
+        self.db_logic = App.get_running_app().db_logic
 
         self.task_input = TextInput(text=cycle.task, multiline=False)
         self.task_input.bind(on_text_validate=self.edit_task)
@@ -35,7 +35,7 @@ class CycleRow(BoxLayout):
         if task:
             old_task_name = self.cycle.task
             self.cycle.task = task
-            self.logic.update_cycle(old_task_name, self.cycle)
+            self.db_logic.update_cycle(old_task_name, self.cycle)
         else:
            self.alert = msg
            self.task_input.text = self.cycle.task
@@ -45,7 +45,7 @@ class CycleRow(BoxLayout):
         period, msg = preprocess_period(period_input.text)
         if period:
             self.cycle.period = period
-            self.logic.update_cycle(self.cycle.task, self.cycle)
+            self.db_logic.update_cycle(self.cycle.task, self.cycle)
         else:
             self.alert = msg
             self.period_input.text = str(self.cycle.period)
@@ -55,7 +55,7 @@ class CycleRow(BoxLayout):
         date, msg = preprocess_next_date(date_input.text)
         if date:
             self.cycle.next_date = date
-            self.logic.update_cycle(self.cycle.task, self.cycle)
+            self.db_logic.update_cycle(self.cycle.task, self.cycle)
         else:
             self.alert = msg
             self.date_input.text = self.cycle.next_date.f_string()

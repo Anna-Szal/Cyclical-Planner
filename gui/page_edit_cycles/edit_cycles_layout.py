@@ -3,7 +3,7 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty
 
-from gui.page_edit_cycles.input_preprocessing import *
+from logic.input_preprocessing import *
 
 
 
@@ -42,7 +42,7 @@ class EditCyclesLayout(BoxLayout):
             return
 
         print(new_cycle)
-        App.get_running_app().logic.create_cycle(new_cycle)
+        App.get_running_app().db_logic.create_cycle(new_cycle)
         self.reset_new_cycle_fields()
         self.cycles_list.update()
 

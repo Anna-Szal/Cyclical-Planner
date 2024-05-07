@@ -1,7 +1,7 @@
 import os
 from kivy.app import App
 
-from logic.use_cases import UseCases
+from logic.db_logic import DbLogic
 from gui.main_layout import MainLayout
 from persistence.setup import create_tables
 from persistence.db_todo import DbTodo
@@ -24,5 +24,5 @@ if __name__ == '__main__':
         create_tables(db_path)
 
     app = CyclicalPlannerApp()
-    app.logic = UseCases(DbTodo(db_path), DbDone(db_path))
+    app.db_logic = DbLogic(DbTodo(db_path), DbDone(db_path))
     app.run()

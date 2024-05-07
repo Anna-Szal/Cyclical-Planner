@@ -8,7 +8,7 @@ from logic.cycle import Cycle
 
 
 
-class UseCases:
+class DbLogic:
     def __init__(self, todo_db: DbTodoInterface, done_db: DbDoneInterface):
         self.todo_db = todo_db
         self.done_db = done_db

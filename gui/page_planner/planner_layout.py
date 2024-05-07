@@ -17,8 +17,8 @@ class PlannerLayout(GridLayout):
 
     def __init__(self, **kwargs):
         super(PlannerLayout, self).__init__(**kwargs)         
-        self.logic = App.get_running_app().logic
-        self.logic.shift_dates_on_startup()
+        self.db_logic = App.get_running_app().db_logic
+        self.db_logic.shift_dates_on_startup()
 
     # called when a widget instance is added/removed from a parent
     def on_parent(self, *largs):
@@ -49,19 +49,19 @@ class PlannerLayout(GridLayout):
 
 
     def update_done_list(self):
-        tasks = self.logic.get_done_tasks(self.chosen_done_date)
+        tasks = self.db_logic.get_done_tasks(self.chosen_done_date)
         self.done_list.update(tasks)        
 
 
     def update_todo_list(self):
-        tasks = self.logic.get_todo_tasks(self.chosen_todo_date)
+        tasks = self.db_logic.get_todo_tasks(self.chosen_todo_date)
         self.todo_list.update(tasks)      
 
 
     def move_to_done(self):
         if self.todo_list.chosen_task != '':
 
-            self.logic.move_to_done(
+            self.db_logic.move_to_done(
                 self.todo_list.chosen_task, 
                 self.chosen_done_date
                 )
