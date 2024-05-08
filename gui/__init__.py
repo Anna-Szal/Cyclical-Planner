@@ -24,4 +24,5 @@ Builder.load_file(os.path.join(here, 'page_planner', 'calendar_widget', 'calenda
 Builder.load_file(os.path.join(here, 'page_planner', 'calendar_widget', 'calendar_grid.kv'))
 
 Builder.load_file(os.path.join(here, 'page_edit_cycles', 'edit_cycles_layout.kv'))
+Builder.load_file(os.path.join(here, 'page_edit_cycles', 'cycle_list.kv'))
 Builder.load_file(os.path.join(here, 'page_edit_cycles', 'cycle_row.kv'))

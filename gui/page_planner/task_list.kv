@@ -2,13 +2,23 @@
 
 
 
-
 <TaskButton>:
     size_hint: (1, None)
     height: 30
     color: black
     background_down: 'gui/images/button_down2.png'
 
-<PlansList>:
-    size_hint: (.8, 1)
-    pos_hint: {'x': 0.1}
+
+<TaskList>:
+    task_list: task_list
+    do_scroll_y: True
+    do_scroll_x: False
+    size: (80, 210) #(w,h)
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+    StackLayout:
+        id: task_list
+        size_hint_y: None # needed for scrolling
+        pos_hint: {'x': 0.1}
+        on_pos: list(map(int, self.pos))
+        valign: 'top'

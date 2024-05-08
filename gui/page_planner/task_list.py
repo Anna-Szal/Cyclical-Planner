@@ -1,6 +1,6 @@
-from kivy.uix.stacklayout import StackLayout
 from kivy.uix.togglebutton import ToggleButton
-
+from kivy.uix.scrollview import ScrollView
+from kivy.properties import ObjectProperty
 
 
 
@@ -8,22 +8,23 @@ class TaskButton(ToggleButton):
     pass
 
 
-class TaskList(StackLayout):
+class TaskList(ScrollView):
+    task_list = ObjectProperty(None)
 
     def __init__(self, **kwargs):
         super(TaskList, self).__init__(**kwargs)
         self.chosen_task = ''
 
-
-    def update(self, tasks):
-        self.clear_widgets()
+    def update(self, plans):
+        self.task_list.clear_widgets()
+        self.task_list.height = 0
         self.chosen_task = ''
-        for task in tasks:
-            tb = TaskButton(text=task, group='task')
+        for plan in plans:
+            tb = TaskButton(text=plan, group='plan')
             tb.bind(state=self.toggle)
-            self.add_widget(tb)
+            self.task_list.add_widget(tb)
+            self.task_list.height += tb.height
             
-
     def toggle(self, tb, state):
         if state == 'down':
             self.chosen_task = tb.text

@@ -50,6 +50,8 @@
 
     BoxLayout:
         size_hint_max_y: 40
+        size_hint_x: .9
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
         TextInput:
             id: input_task
@@ -65,5 +67,6 @@
         text: '+'
         background_color: (.6, .6, .6, 1)
         on_press: root.create_new_cycle()
-        size_hint_y: .2
+        size_hint: .9, .2
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
         font_size: 80

@@ -1,0 +1,17 @@
+#:kivy 2.3.0
+
+
+
+<CyclesList>:
+    cycle_list: cycle_list
+    do_scroll_y: True
+    do_scroll_x: False
+    size_hint_x: 0.9
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+    StackLayout:
+        id: cycle_list
+        size_hint_y: None
+        pos_hint: {'x': 0.1}
+        on_pos: list(map(int, self.pos))
+        valign: 'top'
