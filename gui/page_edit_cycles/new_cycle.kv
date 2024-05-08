@@ -1,0 +1,22 @@
+#:kivy 2.3.0
+#:import TextInput kivy.uix.textinput.TextInput
+
+<NewCycle>:
+    input_task: input_task
+    input_period: input_period
+    input_date: input_date
+
+    TextInput:
+        id: input_task
+        multiline: False
+        on_text_validate: root.create_new_cycle()
+
+    TextInput:
+        id: input_period
+        multiline: False
+        on_text_validate: root.create_new_cycle()
+
+    TextInput:
+        id: input_date
+        multiline: False
+        on_text_validate: root.create_new_cycle()

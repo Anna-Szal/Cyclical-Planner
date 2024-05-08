@@ -1,14 +1,11 @@
 #:kivy 2.3.0
-#:import TextInput kivy.uix.textinput.TextInput
 
 
 
 <EditCyclesLayout>:
     cycles_list: cycles_list
     info: info
-    input_task: input_task
-    input_period: input_period
-    input_date: input_date
+    new_cycle: new_cycle
 
     orientation: 'vertical'
     canvas.before:
@@ -48,25 +45,16 @@
         size_hint_max_y: 30
         text_size: self.size
 
-    BoxLayout:
+    NewCycle:
+        id: new_cycle
         size_hint_max_y: 40
         size_hint_x: .9
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
-        TextInput:
-            id: input_task
-            multiline: False
-        TextInput:
-            id: input_period
-            multiline: False
-        TextInput:
-            id: input_date
-            multiline: False
-
     Button:
         text: '+'
         background_color: (.6, .6, .6, 1)
-        on_press: root.create_new_cycle()
-        size_hint: .9, .2
+        on_press: new_cycle.create_new_cycle()
+        size_hint: .9, .1
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-        font_size: 80
+        font_size: 60
