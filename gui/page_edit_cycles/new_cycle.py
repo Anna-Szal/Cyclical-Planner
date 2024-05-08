@@ -27,7 +27,6 @@ class NewCycle(BoxLayout):
 
 
     def create_new_cycle(self):
-        print('new from NewCycle')
         new_cycle, message = preprocess_cycle(
             self.input_task.text,
             self.input_period.text,
@@ -37,6 +36,10 @@ class NewCycle(BoxLayout):
         if new_cycle is None:
             return
 
-        App.get_running_app().db_logic.create_cycle(new_cycle)
-        self.created = True
+        returned = self.db_logic.get_cycle(new_cycle.task)
+        if not returned:
+            self.db_logic.create_cycle(new_cycle)
+            self.created = True
+        else:
+            self.alert = 'cycle with this task name already exists'
         

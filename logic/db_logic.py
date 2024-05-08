@@ -18,6 +18,22 @@ class DbLogic:
         
 
     # TO DO part
+    def create_cycle(self, cycle: Cycle) -> None:
+        self.todo_db.create_cycle(cycle)
+
+    def get_cycle(self, task: str) -> Cycle:
+        return self.todo_db.get_cycle(task)
+    
+    def get_all_cycles(self) -> List[Cycle]:
+        return self.todo_db.get_all_cycles()
+
+    def update_cycle(self, task: str, new_cycle: Cycle) -> None:
+        self.todo_db.update_cycle(task, new_cycle)
+
+    def remove_cycle(self, task: str) -> None:
+        self.todo_db.remove_cycle(task)
+    
+
     def shift_dates_on_startup(self):
         cycles = self.todo_db.get_all_cycles()
         for cycle in cycles:
@@ -38,18 +54,6 @@ class DbLogic:
 
         return tasks
 
-
-    def create_cycle(self, cycle: Cycle) -> None:
-        self.todo_db.create_cycle(cycle)
-
-    def get_all_cycles(self) -> List[Cycle]:
-        return self.todo_db.get_all_cycles()
-
-    def update_cycle(self, task: str, new_cycle: Cycle) -> None:
-        self.todo_db.update_cycle(task, new_cycle)
-
-    def remove_cycle(self, task: str) -> None:
-        self.todo_db.remove_cycle(task)
 
 
     # DONE part

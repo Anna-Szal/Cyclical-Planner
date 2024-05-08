@@ -26,7 +26,6 @@ class EditCyclesLayout(BoxLayout):
 
     def created_new_cycle(self, *largs):
         if self.new_cycle.created == True:
-            print('new from layout')
             self.new_cycle.reset_new_cycle_fields()
             self.cycles_list.update()
 
