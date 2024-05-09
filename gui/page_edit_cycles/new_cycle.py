@@ -3,6 +3,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty, ObjectProperty, BooleanProperty
 
 from logic.input_preprocessing import *
+from logic.date import Date
 
 
 
@@ -17,12 +18,13 @@ class NewCycle(BoxLayout):
         super(NewCycle, self).__init__(**kwargs)
         self.db_logic = App.get_running_app().db_logic
         self.today = time.localtime()
+        self.today = Date(*self.today[:3])
 
 
     def reset_new_cycle_fields(self):
         self.input_task.text = ''
         self.input_period.text = '1'
-        self.input_date.text = f'{self.today[2]}.{self.today[1]}.{self.today[0]}'
+        self.input_date.text = self.today.f_string()
         self.created = False
 
 

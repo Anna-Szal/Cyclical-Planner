@@ -1,5 +1,6 @@
 from typing import NamedTuple
 import datetime
+import time
 
 
 
@@ -20,4 +21,5 @@ class Date(NamedTuple):
         return Date(d0.year, d0.month, d0.day)
     
     def f_string(self):
-        return f'{self.day}.{self.month}.{self.year}'
+
+        return datetime.date(*self).strftime('%d.%m.%Y')
