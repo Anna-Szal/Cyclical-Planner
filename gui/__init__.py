@@ -12,6 +12,9 @@ from .page_edit_cycles.cycle_list import CyclesList
 from .page_edit_cycles.cycle_row import CycleRow
 from .page_edit_cycles.new_cycle import NewCycle
 
+from .page_statistics.statistics_layout import StatisticsLayout
+from .page_statistics.year_widget.year_grid import YearGrid, DayCell
+
 
 
 script_path = os.path.realpath(__file__)
@@ -28,3 +31,6 @@ Builder.load_file(os.path.join(here, 'page_edit_cycles', 'edit_cycles_layout.kv'
 Builder.load_file(os.path.join(here, 'page_edit_cycles', 'cycle_list.kv'))
 Builder.load_file(os.path.join(here, 'page_edit_cycles', 'cycle_row.kv'))
 Builder.load_file(os.path.join(here, 'page_edit_cycles', 'new_cycle.kv'))
+
+Builder.load_file(os.path.join(here, 'page_statistics', 'statistics_layout.kv'))
+Builder.load_file(os.path.join(here, 'page_statistics', 'year_widget', 'year_grid.kv'))

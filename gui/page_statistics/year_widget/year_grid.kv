@@ -1,0 +1,32 @@
+#:kivy 2.3.0
+
+
+
+<DayCell>:
+    background_color: white
+    canvas.before:
+        Color:
+            rgba: self.background_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+
+<TodayCell>:
+    canvas.before:
+        Color:
+            rgba: complementary_dark
+        Line:
+            rectangle: (self.x, self.y, self.height, self.width)
+
+
+<YearGrid>:
+    rows: 7
+    spacing: [2,2]
+
+    canvas.before:
+        Color:
+            rgba: neutral
+        Rectangle:
+            size: self.size
+            pos: self.pos

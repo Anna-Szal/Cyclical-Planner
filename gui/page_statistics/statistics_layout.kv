@@ -1,0 +1,37 @@
+#:kivy 2.3.0
+
+
+<StatisticsLayout>:
+    year_grid: year_grid
+
+    canvas.before:
+        Color:
+            rgba: white
+        Rectangle:
+            size: self.size
+            pos: self.pos
+            
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size
+        pos: root.pos
+
+        Label:
+            text: 'STATISTICS'
+            size_hint_max_y: 80
+            font_size: 40 
+
+        YearGrid:
+            id: year_grid
+            size_hint_x: 0.9
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            canvas.before:
+                Color:
+                    rgba: white
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+        Label:
+            size_hint_max_y: 80
+            font_size: 40
