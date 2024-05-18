@@ -30,6 +30,9 @@ class DbDoneInterface:
     def get_dates(self, task: str) -> List[Date]:
         pass
 
+    def get_tasks_start_with(self, string) -> List[str]:
+        pass
+
     def insert_task(self, task: str, date: Date) -> None:
         pass
 

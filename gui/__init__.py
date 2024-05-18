@@ -12,7 +12,7 @@ from .page_edit_cycles.cycle_list import CyclesList
 from .page_edit_cycles.cycle_row import CycleRow
 from .page_edit_cycles.new_cycle import NewCycle
 
-from .page_statistics.statistics_layout import StatisticsLayout
+from .page_statistics.statistics_layout import StatisticsLayout, ComboBox
 from .page_statistics.year_widget.year_grid import YearGrid, DayCell
 
 

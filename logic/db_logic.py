@@ -7,7 +7,6 @@ from logic.cycle import Cycle
 
 
 
-
 class DbLogic:
     def __init__(self, todo_db: DbTodoInterface, done_db: DbDoneInterface):
         self.todo_db = todo_db
@@ -62,6 +61,9 @@ class DbLogic:
 
     def get_done_dates(self, task: str):
         return self.done_db.get_dates(task)
+    
+    def get_tasks_start_with(self, string: str) -> List[str]:
+        return self.done_db.get_tasks_start_with(string)
 
     def update_task(self, old_task_name: str, new_task_name: str):
         return self.done_db.update_task(old_task_name, new_task_name)

@@ -32,6 +32,18 @@
                     size: self.size
                     pos: self.pos
 
+        ComboBox:
+            size_hint_x: 0.5
+            size_hint_max_y: 40
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            container: suggestions
+            
         Label:
             size_hint_max_y: 80
             font_size: 40
+
+        StackLayout:
+            id: suggestions
+            size_hint_y: None
+            valign: 'top'        
+            

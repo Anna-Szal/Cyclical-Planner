@@ -29,6 +29,16 @@ class DbDone(DbDoneInterface):
         return tasks
 
 
+    def get_tasks_start_with(self, string):
+        con = sl.connect(self.db_path)
+        with con:
+            cursor = con.cursor()
+            cursor.execute('SELECT * FROM done_task WHERE task LIKE (?)', (string+'%',))
+            tasks = cursor.fetchall()
+            tasks = [t[1] for t in tasks]
+        return tasks
+
+
     def get_dates(self, task):
         con = sl.connect(self.db_path)
         dates = []
