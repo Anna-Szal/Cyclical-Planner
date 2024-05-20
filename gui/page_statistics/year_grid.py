@@ -1,8 +1,9 @@
 import time
+from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.properties import ObjectProperty, ListProperty
-
+import kivy.utils
 from logic.date import Date
 from logic.calendar_logic import get_days_grid
 
@@ -24,6 +25,9 @@ class YearGrid(GridLayout):
 
     def __init__(self, **kwargs):
         super(YearGrid, self).__init__(**kwargs)
+        self.db_logic = App.get_running_app().db_logic
+        self.marked_days = set()
+
         self.row_force_default = self.col_force_default = True
         self.row_default_height = self.col_default_width = 10
 
@@ -41,15 +45,23 @@ class YearGrid(GridLayout):
         for row in days_grid:
             for cell in row:
                 display_month, display_day = cell
-                if display_month == 0: 
+                display_date = Date(self.display_year, display_month, display_day)
+                if display_date in self.marked_days:
+                    bg_color = kivy.utils.get_color_from_hex('#A9E1D0') 
+                elif display_month == 0: 
                     bg_color = (0, 0, 0, 0)
                 else:
                     bg_color = (.9,.9,.9, 1) if display_month % 2 == 0 else (.8,.8,.8, 1)
 
-                if self.today ==  Date(self.display_year, display_month, display_day):
+                if self.today == display_date:
                     day_cell = TodayCell(bg_color)
                 else:
                     day_cell = DayCell(bg_color)
 
                 self.add_widget(day_cell)
-                                        
+
+
+    def mark_days(self, instance, value):
+        dates = self.db_logic.get_done_dates(value)
+        self.marked_days = set(dates)
+        self.update()

@@ -59,7 +59,7 @@ class DbLogic:
     def get_done_tasks(self, date: Date):
         return self.done_db.get_tasks(date)
 
-    def get_done_dates(self, task: str):
+    def get_done_dates(self, task: str) -> List[Date]:
         return self.done_db.get_dates(task)
     
     def get_tasks_start_with(self, string: str) -> List[str]:

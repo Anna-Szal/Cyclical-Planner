@@ -1,7 +1,7 @@
 import sqlite3 as sl
 
 from logic.db_interfaces import DbDoneInterface
-
+from logic.date import Date
 
 
 class DbDone(DbDoneInterface):
@@ -60,7 +60,7 @@ class DbDone(DbDoneInterface):
                         id
                         )
                     date = cursor.fetchone()
-                    dates.append(date)
+                    dates.append(Date(*date))
 
         return dates       
 
