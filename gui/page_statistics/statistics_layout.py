@@ -1,11 +1,10 @@
-from kivy.uix.boxlayout import BoxLayout
-from kivy.properties import ObjectProperty
+
+from kivy.factory import Factory
 
 
-
-class StatisticsLayout(BoxLayout):
-    year_grid = ObjectProperty()
-    c_box = ObjectProperty()
+class StatisticsLayout(Factory.BoxLayout):
+    year_grid = Factory.ObjectProperty()
+    c_box = Factory.ObjectProperty()
 
     def __init__(self, **kwargs):
         super(StatisticsLayout, self).__init__(**kwargs)

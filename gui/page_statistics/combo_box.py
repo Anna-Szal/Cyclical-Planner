@@ -17,7 +17,6 @@ class ComboBox(TextInput):
 
     def on_text(self, instance, value):
         self.container.clear_widgets()
-            
         if value != '':
             tasks = sorted(self.db_logic.get_tasks_start_with(value))
 

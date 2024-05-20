@@ -5,47 +5,39 @@
     year_grid: year_grid
     c_box: c_box
 
+    orientation: 'vertical'
+
     canvas.before:
         Color:
             rgba: white
         Rectangle:
             size: self.size
             pos: self.pos
-            
-    BoxLayout:
-        orientation: 'vertical'
-        size: root.size
-        pos: root.pos
 
-        Label:
-            text: 'STATISTICS'
-            size_hint_max_y: 80
-            font_size: 40 
+    Label:
+        text: 'STATISTICS'
+        size_hint_max_y: 80
+        font_size: 40 
+   
 
-        YearGrid:
-            id: year_grid
-            size_hint_x: 0.9
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-            canvas.before:
-                Color:
-                    rgba: white
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
+    YearGrid:
+        id: year_grid
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
-        ComboBox:
-            id: c_box
-            size_hint_x: 0.5
-            size_hint_max_y: 40
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-            container: suggestions
-            
-        Label:
-            size_hint_max_y: 80
-            font_size: 40
+    Label:
+        size_hint_max_y: 20
 
-        StackLayout:
-            id: suggestions
-            size_hint_y: None
-            valign: 'top'        
-            
+    ComboBox:
+        id: c_box
+        size_hint_x: 0.5
+        size_hint_max_y: 40
+
+        container: suggestions
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                
+    StackLayout:
+        id: suggestions
+        size_hint_y: None
+        valign: 'top'        
+
+    Widget:

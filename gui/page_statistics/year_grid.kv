@@ -22,11 +22,12 @@
 
 <YearGrid>:
     rows: 7
-    spacing: [2,2]
+    size_hint: None, None
+    pos_hint: {'top': 1}
 
     canvas.before:
         Color:
-            rgba: neutral
+            rgba: white
         Rectangle:
             size: self.size
             pos: self.pos

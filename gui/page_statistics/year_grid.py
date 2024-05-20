@@ -28,9 +28,13 @@ class YearGrid(GridLayout):
         self.db_logic = App.get_running_app().db_logic
         self.marked_days = set()
 
+        self.spacing = [2, 2]
+
         self.row_force_default = self.col_force_default = True
         self.row_default_height = self.col_default_width = 10
 
+        self.width = 0
+        self.height = self.row_default_height*7 + self.spacing[1]*6
         self.today = time.localtime()
         self.today = Date(*self.today[:3])
         self.chosen_date = self.today
@@ -42,6 +46,8 @@ class YearGrid(GridLayout):
         self.clear_widgets()
         
         days_grid = get_days_grid(self.display_year)
+        days_in_row = len(days_grid[0])
+        self.width = days_in_row*self.col_default_width + self.spacing[0]*(days_in_row-1)
         for row in days_grid:
             for cell in row:
                 display_month, display_day = cell
