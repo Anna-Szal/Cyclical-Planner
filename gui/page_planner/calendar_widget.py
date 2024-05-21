@@ -1,13 +1,12 @@
 import calendar
 import time
-from kivy.uix.widget import Widget
-from kivy.properties import ObjectProperty, StringProperty
+from kivy.factory import Factory
 
 
 
-class CalendarWidget(Widget):
-    m_title = StringProperty('')
-    calendar_grid = ObjectProperty(None)
+class CalendarWidget(Factory.Widget):
+    m_title = Factory.StringProperty('')
+    calendar_grid = Factory.ObjectProperty(None)
 
     def __init__(self, **kwargs):
         super(CalendarWidget, self).__init__(**kwargs)

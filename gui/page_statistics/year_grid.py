@@ -1,16 +1,15 @@
 import time
 from kivy.app import App
-from kivy.uix.label import Label
-from kivy.uix.gridlayout import GridLayout
-from kivy.properties import ObjectProperty, ListProperty
+from kivy.factory import Factory
 import kivy.utils
+
 from logic.date import Date
 from logic.calendar_logic import get_days_grid
 
 
 
-class DayCell(Label):
-    background_color = ListProperty((0, 0, 0, 0))
+class DayCell(Factory.Label):
+    background_color = Factory.ListProperty((0, 0, 0, 0))
     def __init__(self, bg_color=(0, 0, 0, 0), *args, **kwargs):
         super(DayCell, self).__init__(*args, **kwargs)
         self.background_color = bg_color
@@ -20,8 +19,8 @@ class TodayCell(DayCell):
     pass
 
 
-class YearGrid(GridLayout):
-    chosen_date = ObjectProperty(None)
+class YearGrid(Factory.GridLayout):
+    chosen_date = Factory.ObjectProperty(None)
 
     def __init__(self, **kwargs):
         super(YearGrid, self).__init__(**kwargs)

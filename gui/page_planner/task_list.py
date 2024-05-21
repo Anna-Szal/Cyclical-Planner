@@ -1,15 +1,13 @@
-from kivy.uix.togglebutton import ToggleButton
-from kivy.uix.scrollview import ScrollView
-from kivy.properties import ObjectProperty
+from kivy.factory import Factory
 
 
 
-class TaskButton(ToggleButton):
+class TaskButton(Factory.ToggleButton):
     pass
 
 
-class TaskList(ScrollView):
-    task_list = ObjectProperty(None)
+class TaskList(Factory.ScrollView):
+    task_list = Factory.ObjectProperty(None)
 
     def __init__(self, **kwargs):
         super(TaskList, self).__init__(**kwargs)

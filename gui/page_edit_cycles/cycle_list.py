@@ -1,17 +1,17 @@
 from kivy.app import App
-from kivy.uix.scrollview import ScrollView
-from kivy.properties import StringProperty, ObjectProperty
+from kivy.factory import Factory
 
 from gui.page_edit_cycles.cycle_row import CycleRow
 
 
 
-class CyclesList(ScrollView):
-    alert = StringProperty('')
-    cycle_list = ObjectProperty(None)
+class CyclesList(Factory.ScrollView):
+    alert = Factory.StringProperty('')
+    cycle_list = Factory.ObjectProperty(None)
 
     def __init__(self, **kwargs):
         super(CyclesList, self).__init__(**kwargs)
+
 
     def update(self):
         self.cycle_list.clear_widgets()
@@ -22,6 +22,7 @@ class CyclesList(ScrollView):
             row.bind(alert=self.row_changed)
             self.cycle_list.add_widget(row)
             self.cycle_list.height += row.height
+
 
     def row_changed(self, row, alert):
         self.alert = alert

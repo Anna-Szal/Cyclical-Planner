@@ -1,10 +1,9 @@
 from kivy.core.window import Window
-from kivy.uix.button import Button
-from kivy.graphics import Color, Line
+from kivy.factory import Factory
 
 
 
-class ButtonHLBg(Button):
+class ButtonHLBg(Factory.Button):
     def __init__(self, highlight_color=(.9, .9, .9, 1), 
                  *args, **kwargs):
         super(ButtonHLBg, self).__init__(*args, **kwargs)
@@ -20,7 +19,8 @@ class ButtonHLBg(Button):
             self.background_color = self.original_color
 
 
-class ButtonHLText(Button):
+
+class ButtonHLText(Factory.Button):
     def __init__(self, highlight_color=(.9, .9, .9, 1), 
                  *args, **kwargs):
         super(ButtonHLText, self).__init__(*args, **kwargs)
@@ -35,14 +35,15 @@ class ButtonHLText(Button):
             self.color = self.original_color
 
 
-class ButtonOutline(Button):
+
+class ButtonOutline(Factory.Button):
     def __init__(self, outline_color=(.5, .5, .5, 1), *args, **kwargs):
         super(ButtonOutline, self).__init__(*args, **kwargs)
         self.outline = False
 
         with self.canvas.before:
-            Color(*outline_color)
-            self.line = Line(width=2)
+            Factory.Color(*outline_color)
+            self.line = Factory.Line(width=2)
 
 
     def on_size(self, instance, value):

@@ -1,13 +1,11 @@
 from kivy.app import App
-from kivy.uix.textinput import TextInput
-from kivy.uix.button import Button
-from kivy.properties import ObjectProperty, StringProperty
+from kivy.factory import Factory
 
 
 
-class ComboBox(TextInput):
-    container = ObjectProperty()
-    selected_task = StringProperty()
+class ComboBox(Factory.TextInput):
+    container = Factory.ObjectProperty()
+    selected_task = Factory.StringProperty()
 
     def __init__(self, **kwargs):
         super(ComboBox, self).__init__(**kwargs)
@@ -21,7 +19,8 @@ class ComboBox(TextInput):
             tasks = sorted(self.db_logic.get_tasks_start_with(value))
 
             for word in tasks:
-                btn = Button(text=word, on_press=self.select_word, size_hint_y=None, height=50)
+                btn = Factory.Button(
+                    text=word, on_press=self.select_word, size_hint_y=None, height=50)
                 self.container.add_widget(btn)
 
 
@@ -32,5 +31,3 @@ class ComboBox(TextInput):
 
     def on_text_validate(self, **kwargs):
         self.selected_task = self.text            
-
-

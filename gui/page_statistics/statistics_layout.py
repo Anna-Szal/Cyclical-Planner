@@ -1,5 +1,5 @@
-
 from kivy.factory import Factory
+
 
 
 class StatisticsLayout(Factory.BoxLayout):

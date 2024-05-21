@@ -1,6 +1,6 @@
 from kivy.app import App
-from kivy.uix.gridlayout import GridLayout
-from kivy.properties import ObjectProperty
+from kivy.factory import Factory
+
 import gui.building_blocks as bb
 
 
@@ -9,11 +9,11 @@ class ArrowButton(bb.ButtonHLText):
     pass
 
 
-class PlannerLayout(GridLayout):
-    done_list = ObjectProperty(None)    
-    todo_list = ObjectProperty(None)
-    done_calendar = ObjectProperty(None)
-    todo_calendar = ObjectProperty(None)
+class PlannerLayout(Factory.GridLayout):
+    done_list = Factory.ObjectProperty(None)    
+    todo_list = Factory.ObjectProperty(None)
+    done_calendar = Factory.ObjectProperty(None)
+    todo_calendar = Factory.ObjectProperty(None)
 
     def __init__(self, **kwargs):
         super(PlannerLayout, self).__init__(**kwargs)         

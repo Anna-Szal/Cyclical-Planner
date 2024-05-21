@@ -1,9 +1,7 @@
 import calendar
 import time
 import datetime
-from kivy.uix.label import Label
-from kivy.uix.gridlayout import GridLayout
-from kivy.properties import BooleanProperty, ObjectProperty
+from kivy.factory import Factory
 
 import gui.building_blocks as bb
 from logic.date import Date
@@ -16,10 +14,10 @@ class ChosenButton(bb.ButtonOutline):
     pass
 
 
-class CalendarGrid(GridLayout):
-    chosen_date = ObjectProperty(None)
-    no_future = BooleanProperty(False)
-    no_past = BooleanProperty(False)
+class CalendarGrid(Factory.GridLayout):
+    chosen_date = Factory.ObjectProperty(None)
+    no_future = Factory.BooleanProperty(False)
+    no_past = Factory.BooleanProperty(False)
 
     def __init__(self, **kwargs):
         super(CalendarGrid, self).__init__(**kwargs)
@@ -39,7 +37,7 @@ class CalendarGrid(GridLayout):
         for week in weeks:
             for display_day in week:
                 if display_day == 0: 
-                    day_btn = Label(text='')
+                    day_btn = Factory.Label(text='')
                     self.add_widget(day_btn)
                     continue
                 

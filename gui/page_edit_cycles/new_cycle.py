@@ -1,18 +1,17 @@
 from kivy.app import App
-from kivy.uix.boxlayout import BoxLayout
-from kivy.properties import StringProperty, ObjectProperty, BooleanProperty
+from kivy.factory import Factory
 
 from logic.input_preprocessing import *
 from logic.date import Date
 
 
 
-class NewCycle(BoxLayout):
-    alert = StringProperty('')
-    created = BooleanProperty(False)
-    input_task = ObjectProperty(None)
-    input_period = ObjectProperty(None)
-    input_date = ObjectProperty(None)
+class NewCycle(Factory.BoxLayout):
+    alert = Factory.StringProperty('')
+    created = Factory.BooleanProperty(False)
+    input_task = Factory.ObjectProperty(None)
+    input_period = Factory.ObjectProperty(None)
+    input_date = Factory.ObjectProperty(None)
 
     def __init__(self, **kwargs):
         super(NewCycle, self).__init__(**kwargs)
@@ -44,4 +43,3 @@ class NewCycle(BoxLayout):
             self.created = True
         else:
             self.alert = 'cycle with this task name already exists'
-        
