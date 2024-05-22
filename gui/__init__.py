@@ -8,7 +8,7 @@ from .page_planner.calendar_widget import CalendarWidget
 from .page_planner.calendar_grid import CalendarGrid
 
 from .page_edit_cycles.edit_cycles_layout import EditCyclesLayout
-from .page_edit_cycles.cycle_list import CyclesList
+from .page_edit_cycles.cycle_list import CyclesList, RemovePopup
 from .page_edit_cycles.cycle_row import CycleRow
 from .page_edit_cycles.new_cycle import NewCycle
 

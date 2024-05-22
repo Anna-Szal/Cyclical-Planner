@@ -20,3 +20,10 @@
         id: input_date
         multiline: False
         on_text_validate: root.create_new_cycle()
+
+    Button:
+        text: '+'
+        on_press: root.create_new_cycle()
+        size_hint_x: None
+        width: 30
+        font_size: 40

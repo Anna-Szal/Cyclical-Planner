@@ -8,6 +8,7 @@ from logic.input_preprocessing import *
 
 class CycleRow(Factory.BoxLayout):
     alert = Factory.StringProperty('')
+    removed = Factory.BooleanProperty(False)
 
     def __init__(self, cycle: Cycle, **kwargs):
         super(CycleRow, self).__init__(**kwargs)
@@ -25,7 +26,12 @@ class CycleRow(Factory.BoxLayout):
 
         self.date_input = Factory.TextInput(text=cycle.next_date.f_string(), multiline=False)
         self.date_input.bind(on_text_validate=self.edit_date)
-        self.add_widget(self.date_input)        
+        self.add_widget(self.date_input)
+
+        self.remove_btn = Factory.Button(
+            text='-', size_hint_x=None, width=30, font_size=40)
+        self.remove_btn.bind(on_press=self.remove_cycle)
+        self.add_widget(self.remove_btn)   
 
 
     def edit_task(self, task_input):
@@ -58,3 +64,8 @@ class CycleRow(Factory.BoxLayout):
         else:
             self.alert = msg
             self.date_input.text = self.cycle.next_date.f_string()
+
+
+    def remove_cycle(self, *args):
+        self.removed = True
+        
