@@ -11,17 +11,29 @@ class ComboBox(Factory.TextInput):
         super(ComboBox, self).__init__(**kwargs)
         self.multiline=False
         self.db_logic = App.get_running_app().db_logic
+        
+
+    def on_double_tap(self, **kwargs):
+        if self.text == '':
+            self.update_dropdown('')
+
+
+    def update_dropdown(self, string):
+        self.container.clear_widgets()
+        self.container.height = 0
+
+        tasks = sorted(self.db_logic.get_tasks_start_with(string))
+
+        for word in tasks:
+            btn = Factory.Button(
+                text=word, on_press=self.select_word, size_hint_y=None, height=50)
+            
+            self.container.add_widget(btn)  
+            self.container.height += btn.height
 
 
     def on_text(self, instance, value):
-        self.container.clear_widgets()
-        if value != '':
-            tasks = sorted(self.db_logic.get_tasks_start_with(value))
-
-            for word in tasks:
-                btn = Factory.Button(
-                    text=word, on_press=self.select_word, size_hint_y=None, height=50)
-                self.container.add_widget(btn)
+        self.update_dropdown(value)
 
 
     def select_word(self, btn):
