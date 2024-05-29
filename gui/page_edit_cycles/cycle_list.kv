@@ -12,8 +12,10 @@
     BoxLayout:
         Button:
             text: 'YES'
+            on_release: root.remove_with_history()
         Button:
             text: 'NO'
+            on_release: root.remove_cycle()
 
 
 <CyclesList>:

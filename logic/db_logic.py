@@ -54,9 +54,8 @@ class DbLogic:
         return tasks
 
 
-
     # DONE part
-    def get_done_tasks(self, date: Date):
+    def get_done_tasks(self, date: Date) -> List[str]:
         return self.done_db.get_tasks(date)
 
     def get_done_dates(self, task: str) -> List[Date]:
@@ -65,11 +64,14 @@ class DbLogic:
     def get_tasks_start_with(self, string: str) -> List[str]:
         return self.done_db.get_tasks_start_with(string)
 
-    def update_task(self, old_task_name: str, new_task_name: str):
-        return self.done_db.update_task(old_task_name, new_task_name)
+    def update_task(self, old_task_name: str, new_task_name: str) -> None:
+        self.done_db.update_task(old_task_name, new_task_name)
     
-    def remove_task(self, task:str):
-        pass
+    def remove_task(self, task:str, date: Date) -> None:
+        self.done_db.remove_task(task, date)
+
+    def remove_task_history(self, task: str) -> None:
+        self.done_db.remove_task_history(task)
 
 
     # TO DO --> DONE part

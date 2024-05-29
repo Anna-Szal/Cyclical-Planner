@@ -41,3 +41,6 @@ class DbDoneInterface:
 
     def remove_task(self, task: str, date: Date) -> None:
         pass
+
+    def remove_task_history(self, task: str) -> None:
+        pass

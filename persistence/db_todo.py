@@ -93,7 +93,11 @@ class DbTodo(DbTodoInterface):
 
 
     def remove_cycle(self, task: str) -> None:
-        pass
+        con = sl.connect(self.db_path)
+        with con:
+            cursor = con.cursor()
+            cursor.execute('DELETE FROM cycle WHERE task = (?)', (task,))
+            con.commit()
 
 
     # DEBUGGING

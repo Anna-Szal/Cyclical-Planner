@@ -115,8 +115,20 @@ class DbDone(DbDoneInterface):
                 )
             con.commit()
 
-    # TODO
-    # def remove_task()
+
+    def remove_task(self, task, date):
+        pass
+    
+    def remove_task_history(self, task):
+        print('removing')
+        con = sl.connect(self.db_path)
+        with con:
+            cursor = con.cursor()
+            cursor.execute('SELECT id FROM done_task WHERE task=(?)', (task,))
+            task_id = cursor.fetchone()
+            cursor.execute('DELETE FROM done_task_date WHERE task_id=(?)', task_id)
+            cursor.execute('DELETE FROM done_task WHERE task=(?)', (task,))
+
 
     # DEBUGGING
     def print_all_tasks(self):
