@@ -14,6 +14,20 @@
     font_size: 80
 
 
+<RemoveButton>:
+    size_hint: (None, None)
+    size: (80, 30)
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    color: white
+    background_color: 0,0,0,0  # the last zero is the critical on, make invisible
+    canvas.before:
+        Color:
+            rgba: (0.61, 0.43, 0.33,1) if self.state=='normal' else complementary_dark  # visual feedback of press
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [5,]
+
 <PlannerLayout>:
     done_list: done_list
     todo_list: todo_list
@@ -42,6 +56,13 @@
 
         TaskList:
             id: done_list
+
+        RemoveButton:
+            text: 'remove'
+            on_press: root.remove_task()
+
+        Widget:
+            size_hint: (1, .1)
 
         CalendarWidget:
             id: done_calendar
@@ -73,6 +94,13 @@
 
         TaskList:
             id: todo_list
+
+        RemoveButton:
+            text: 'skip'
+            on_press: root.skip_task()
+            
+        Widget:
+            size_hint: (1, .1)
 
         CalendarWidget:
             id: todo_calendar

@@ -8,6 +8,8 @@ import gui.building_blocks as bb
 class ArrowButton(bb.ButtonHLText):
     pass
 
+class RemoveButton(Factory.Button):
+    pass
 
 class PlannerLayout(Factory.GridLayout):
     done_list = Factory.ObjectProperty(None)    
@@ -69,3 +71,11 @@ class PlannerLayout(Factory.GridLayout):
             self.update_done_list()
             self.update_todo_list()
             self.todo_list.chosen_task = ''
+
+
+    def remove_task(self):
+        print(self.done_list.chosen_task)
+
+
+    def skip_task(self):
+        print(self.todo_list.chosen_task)

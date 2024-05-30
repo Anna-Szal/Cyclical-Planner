@@ -1,5 +1,7 @@
 import os
 from kivy.app import App
+from kivy.core.window import Window
+Window.size = (800, 622)
 
 from logic.db_logic import DbLogic
 from gui.main_layout import MainLayout
