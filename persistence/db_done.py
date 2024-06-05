@@ -117,10 +117,19 @@ class DbDone(DbDoneInterface):
 
 
     def remove_task(self, task, date):
-        pass
+        con = sl.connect(self.db_path)
+        with con:
+            cursor = con.cursor()
+            cursor.execute('SELECT id FROM done_task WHERE task=(?)', (task,))
+            task_id = cursor.fetchone()
+            cursor.execute('SELECT id FROM done_date WHERE year=(?) AND month=(?) AND day=(?)', date)
+            date_id = cursor.fetchone()
+
+            cursor.execute('DELETE FROM done_task_date WHERE task_id=(?) AND date_id=(?)', (task_id[0], date_id[0]))
+            con.commit()
+            
     
     def remove_task_history(self, task):
-        print('removing')
         con = sl.connect(self.db_path)
         with con:
             cursor = con.cursor()

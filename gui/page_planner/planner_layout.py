@@ -74,7 +74,8 @@ class PlannerLayout(Factory.GridLayout):
 
 
     def remove_task(self):
-        print(self.done_list.chosen_task)
+        self.db_logic.remove_task(self.done_list.chosen_task, self.chosen_done_date)
+        self.update_done_list()
 
 
     def skip_task(self):
