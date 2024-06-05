@@ -9,6 +9,8 @@ Planner for repetetive tasks.
 
 <img src="screenshot.png" alt="planner screenshot" width="400"/>
 
+<img src="screenshot2.png" alt="statistics screenshot" width="400"/>
+
 ## Open planner automatically on startup:
 <details>
 <summary>Linux</summary>
