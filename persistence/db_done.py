@@ -135,8 +135,10 @@ class DbDone(DbDoneInterface):
             cursor = con.cursor()
             cursor.execute('SELECT id FROM done_task WHERE task=(?)', (task,))
             task_id = cursor.fetchone()
-            cursor.execute('DELETE FROM done_task_date WHERE task_id=(?)', task_id)
-            cursor.execute('DELETE FROM done_task WHERE task=(?)', (task,))
+
+            if task_id:
+                cursor.execute('DELETE FROM done_task_date WHERE task_id=(?)', task_id)
+                cursor.execute('DELETE FROM done_task WHERE task=(?)', (task,))
 
 
     # DEBUGGING

@@ -5,21 +5,24 @@ from gui.page_edit_cycles.cycle_row import CycleRow
 
 
 
-class RemovePopup(Factory.BoxLayout):
-    task = Factory.ObjectProperty('')
-
-    def __init__(self, **kwargs):
+class RemovePopup(Factory.Popup):
+    def __init__(self, task, **kwargs):
         super(RemovePopup, self).__init__(**kwargs)
+        self.task = task
+        self.title=f'Removing cycle: "{task}"'
+        self.size_hint = (None, None)
+        self.size = (400, 400)
 
 
     def remove_cycle(self, **kwargs):
         App.get_running_app().db_logic.remove_cycle(self.task)
+        self.dismiss()
 
 
-    # the popup doesn't close, the list doesn't update
     def remove_with_history(self, **kwargs):
         App.get_running_app().db_logic.remove_cycle(self.task)
         App.get_running_app().db_logic.remove_task_history(self.task)
+        self.dismiss()
 
 
 
@@ -29,11 +32,6 @@ class CyclesList(Factory.ScrollView):
 
     def __init__(self, **kwargs):
         super(CyclesList, self).__init__(**kwargs)
-        self.popup = Factory.Popup(
-            content=RemovePopup(),
-            size_hint = (None, None),
-            size = (400, 400)
-            )
 
 
     def update(self):
@@ -53,6 +51,10 @@ class CyclesList(Factory.ScrollView):
 
 
     def cycle_removed(self, row, removed):
-        self.popup.title=f'Removing cycle: "{row.cycle.task}"'
-        self.popup.content.task = row.cycle.task
-        self.popup.open()
+        popup = RemovePopup(row.cycle.task)
+        popup.bind(on_dismiss=self.popup_dismissed)
+        popup.open()
+
+
+    def popup_dismissed(self, popup):
+        self.update()

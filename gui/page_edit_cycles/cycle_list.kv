@@ -3,19 +3,20 @@
 
 
 <RemovePopup>:
-    orientation: 'vertical'
-
-    Label:
-        text: 'Would you like to remove history as well?'
-        color: white
-    
     BoxLayout:
-        Button:
-            text: 'YES'
-            on_release: root.remove_with_history()
-        Button:
-            text: 'NO'
-            on_release: root.remove_cycle()
+        orientation: 'vertical'
+
+        Label:
+            text: 'Would you like to remove history as well?'
+            color: white
+        
+        BoxLayout:
+            Button:
+                text: 'YES'
+                on_release: root.remove_with_history()
+            Button:
+                text: 'NO'
+                on_release: root.remove_cycle()
 
 
 <CyclesList>:
