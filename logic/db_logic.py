@@ -54,6 +54,12 @@ class DbLogic:
         return tasks
 
 
+    def skip_one_day(self, task):
+        cycle = self.todo_db.get_cycle(task)
+        cycle.next_date = cycle.next_date.get_shifted_date(1)
+        self.todo_db.update_cycle(task, cycle)
+
+
     # DONE part
     def get_done_tasks(self, date: Date) -> List[str]:
         return self.done_db.get_tasks(date)
@@ -75,12 +81,12 @@ class DbLogic:
 
 
     # TO DO --> DONE part
-    def move_to_done(self, task, done_date: Date):
+    def move_to_done(self, task: str, done_date: Date):
         self.done_db.insert_task(task, done_date)
 
         cycle = self.todo_db.get_cycle(task)
-        done_shifted = done_date.get_shifted_date(cycle.period)
-        delta = done_shifted.delta_with(cycle.next_date)
+        shifted_date = done_date.get_shifted_date(cycle.period)
+        delta = shifted_date.delta_with(cycle.next_date)
         if delta > 0:
-            cycle.next_date = done_shifted
+            cycle.next_date = shifted_date
             self.todo_db.update_cycle(task, cycle)

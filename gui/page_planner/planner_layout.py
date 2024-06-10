@@ -79,4 +79,5 @@ class PlannerLayout(Factory.GridLayout):
 
 
     def skip_task(self):
-        print(self.todo_list.chosen_task)
+        self.db_logic.skip_one_day(self.todo_list.chosen_task)
+        self.update_todo_list()
